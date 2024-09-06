@@ -7,7 +7,7 @@ export default function Nav() {
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           <img src="img/logo.png" alt="Logo" width="30" height="28" className="d-inline-block align-text-top" />
-          EIEI SOFT
+          Peem anime
         </a>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
