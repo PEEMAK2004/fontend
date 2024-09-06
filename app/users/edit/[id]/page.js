@@ -12,7 +12,7 @@ export default function Page({params}) {
     useEffect(() => {
       async function getUsers() {
         try {
-          const res = await fetch(`http://localhost:3000/api/users/${id}`);
+          const res = await fetch(`https://backend-psi-fawn-47.vercel.app/api/users/${id}`);
           if (!res.ok) {
             console.error('Failed to fetch data');
             return;
@@ -39,7 +39,7 @@ export default function Page({params}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:3000/api/users', {
+    const res = await fetch('https://backend-psi-fawn-47.vercel.app/api/users', {
       method: 'PUT',
       headers: {
         Accept : 'application/json',
