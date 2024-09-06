@@ -52,65 +52,45 @@ export default function LoginPage() {
   };
 
   return (
-
-    <>
-      <Navbar />
-      <br /><br /><br /><br /><br />
-      <div className="container">
-        <div className="card">
-          <div className="card-header bg-success text-white">
-            Login Form
-          </div>
-          <div className="card-body">
-            {message && (
-              <div className="alert alert-info" role="alert">
-                {message}
-              </div>
-            )}
-            <form className="row g-3" onSubmit={handleLogin}>
-              <div className="col-md-6">
-                <label htmlFor="username" className="form-label">Username</label>
-                <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">
-                    <i className="bi bi-person-circle"></i>
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <label htmlFor="password" className="form-label">Password</label>
-                <div className="input-group">
-                  <span className="input-group-text" id="basic-addon2">
-                    <i className="bi bi-lock"></i>
-                  </span>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassWord(e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="col-12">
-                <button type="submit" className="btn btn-success">
-                  <i className="bi bi-box-arrow-in-right"></i> Login
-                </button>
-              </div>
-            </form>
-          </div>
+    <div className="container">
+      <div className="card">
+        <div className="card-header bg-primary text-white">
+          Login Form
+        </div>
+        <div className="card-body">
+          {error && <div className="alert alert-danger">{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? 'Logging in...' : 'Log In'}
+            </button>
+          </form>
         </div>
       </div>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <Footer />
+    </div>
+  );
+}
     </>
   );
 }
