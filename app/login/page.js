@@ -33,7 +33,7 @@ export default function Page() {
 
         // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ โดยไม่ต้องยืนยัน
         setTimeout(() => {
-          window.location.href = 'http://localhost:3001/';
+          window.location.href = 'https://backend-psi-fawn-47.vercel.app/';
         }, 1000); // รอ 1 วินาทีก่อนเปลี่ยนหน้า
       } else {
         // ตั้งค่าข้อความผิดพลาดจาก backend
