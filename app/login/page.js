@@ -16,7 +16,9 @@ export default function Page() {
       const res = await fetch('https://backend-psi-fawn-47.vercel.app/api/login', {
         method: 'POST',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
+
         },
         body: JSON.stringify({ username, password }),
       });
