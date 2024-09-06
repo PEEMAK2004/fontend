@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
       localStorage.removeItem('token');
       setIsLoggedIn(false);
       // Redirect to the home page
-      router.push('/');
+      router.push('/login');
     };
   
     useEffect(() => {
@@ -23,7 +23,7 @@ import { useRouter } from 'next/navigation';
       if (token) {
         setIsLoggedIn(true);
       } else {
-        router.push('/');
+        router.push('/login');
       }
   
       // Add event listener for storage changes
