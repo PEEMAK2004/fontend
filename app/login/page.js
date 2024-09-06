@@ -13,7 +13,7 @@ export default function Page() {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch('https://backend-psi-fawn-47.vercel.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
