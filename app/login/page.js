@@ -1,16 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '/app/component/nav';
-import Footer from '/app/component/fot';
+import { useRouter } from 'next/navigation';
 
-export default function Page() {
-  const [username, setUserName] = useState('');
-  const [password, setPassWord] = useState('');
-  const [message, setMessage] = useState(''); // เก็บข้อความแจ้งเตือน
+export default function LoginPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
+    setError('');
 
     try {
       const res = await fetch('https://backend-psi-fawn-47.vercel.app/api/login', {
@@ -18,36 +22,37 @@ export default function Page() {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-
         },
         body: JSON.stringify({ username, password }),
       });
 
-      const result = await res.json();
-
-      if (res.ok) {
-        // ถ้า login สำเร็จ เก็บ token ลงใน localStorage
-        localStorage.setItem('token', result.token);
-        console.log(result);
-        
-        // ตั้งค่าข้อความแจ้งเตือน
-        setMessage('Login successful!');
-
-        // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ โดยไม่ต้องยืนยัน
-        setTimeout(() => {
-          window.location.href = 'https://backend-psi-fawn-47.vercel.app/';
-        }, 1000); // รอ 1 วินาทีก่อนเปลี่ยนหน้า
-      } else {
-        // ตั้งค่าข้อความผิดพลาดจาก backend
-        setMessage(result.error);
+      if (!res.ok) {
+        const { message } = await res.json();
+        throw new Error(message || 'Login failed');
       }
+
+      const result = await res.json();
+      console.log(result);
+      
+      localStorage.setItem('token', result.token);
+      alert('Login successful');
+
+      // Trigger storage event to update Navbar
+      window.dispatchEvent(new Event('storage'));
+
+      // Redirect to home page
+      router.push('/user');
+
     } catch (error) {
-      console.error('An error occurred:', error);
-      setMessage('An error occurred during login.');
+      console.error('Error during login:', error);
+      setError(error.message || 'Login failed. Please check your credentials and try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
+
     <>
       <Navbar />
       <br /><br /><br /><br /><br />
