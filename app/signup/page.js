@@ -15,7 +15,7 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:3000/api/users', {
+    const res = await fetch('https://backend-psi-fawn-47.vercel.app/api/users', {
       method: 'POST',
       headers: {
         Accept : 'application/json',
