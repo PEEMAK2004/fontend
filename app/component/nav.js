@@ -40,6 +40,9 @@ export default function Navbar() {
             <li className="nav-item">
               <Link className="nav-link mx-2" href="/contact">Contact</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link mx-2" href="/users">users</Link>
+            </li>
             <form className="d-flex">
               {isLoggedIn ? (
                 <button className="btn btn-outline-danger me-2" onClick={handleLogout}>Logout</button>
