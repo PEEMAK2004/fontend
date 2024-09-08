@@ -48,7 +48,7 @@ export default function Navbar() {
                 <button className="btn btn-outline-danger me-2" onClick={handleLogout}>Logout</button>
               ) : (
                 <>
-                  <Link className="btn btn-outline-primary me-2" href="/login">Sign In</Link>
+                  <Link className="btn btn-outline-primary me-2" href="/login">Login</Link>
                   <Link className="btn btn-primary" href="/signup">Sign Up</Link>
                 </>
               )}
