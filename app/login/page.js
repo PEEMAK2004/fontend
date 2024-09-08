@@ -41,7 +41,7 @@ export default function LoginPage() {
       window.dispatchEvent(new Event('storage'));
 
       // Redirect to home page
-      router.push('/users');
+      router.push('/user');
 
     } catch (error) {
       console.error('Error during login:', error);
